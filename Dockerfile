@@ -1,8 +1,8 @@
 FROM ruby:2.7.1-alpine
 
+
 ARG RAILS_ROOT=/task_manager
-ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs yarn less tzdata git postgresql-client bash screen gcompat"
-ARG NODE_VERSION=14-alpine
+ARG PACKAGES="vim openssl-dev postgresql-dev build-base curl nodejs-current yarn less tzdata git postgresql-client bash screen gcompat"
 
 RUN apk update \
     && apk upgrade \
