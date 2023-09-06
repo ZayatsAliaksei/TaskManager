@@ -1,6 +1,16 @@
 class Api::V1::TasksController < Api::V1::ApplicationController
   before_action :authenticate_user!
 
+  def index
+    tasks = Task.all
+                .ransack(ransack_params)
+                .result
+                .page(page)
+                .per(per_page)
+
+    respond_with(tasks, each_serializer: TaskSerializer, root: 'items', meta: build_meta(tasks))
+  end
+
   def show
     task = Task.find(params[:id])
     render json: { task: task }
