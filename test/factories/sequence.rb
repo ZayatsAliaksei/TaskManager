@@ -9,6 +9,6 @@ FactoryBot.define do
     "avatar#{n}#{SecureRandom.base64(8)}.com"
   end
   sequence :expired_at do |n|
-    DateTime.now + n
+    Date.today + n
   end
 end
